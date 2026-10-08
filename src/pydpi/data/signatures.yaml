@@ -1,0 +1,32 @@
+# Application signatures: app name -> list of domain suffixes.
+# A host matches a suffix only on a label boundary:
+#   "rr1.googlevideo.com" matches "googlevideo.com"
+#   "notyoutube.com"      does NOT match "youtube.com"
+# When two apps could match, the longest (most specific) suffix wins.
+apps:
+  YouTube:   [youtube.com, youtu.be, googlevideo.com, ytimg.com, youtube-nocookie.com]
+  Google:    [google.com, gstatic.com, googleapis.com, googleusercontent.com, gvt1.com, ggpht.com]
+  Facebook:  [facebook.com, fbcdn.net, fb.com, fbsbx.com]
+  Instagram: [instagram.com, cdninstagram.com]
+  WhatsApp:  [whatsapp.com, whatsapp.net]
+  Twitter/X: [twitter.com, x.com, twimg.com, t.co]
+  Netflix:   [netflix.com, nflxvideo.net, nflximg.net, nflxext.com]
+  Amazon:    [amazon.com, amazonaws.com, cloudfront.net, media-amazon.com, primevideo.com]
+  Microsoft: [microsoft.com, live.com, office.com, office365.com, msftconnecttest.com, windows.com, bing.com, msn.com]
+  Apple:     [apple.com, icloud.com, mzstatic.com, cdn-apple.com]
+  GitHub:    [github.com, githubusercontent.com, githubassets.com]
+  TikTok:    [tiktok.com, tiktokcdn.com, musical.ly, byteoversea.com]
+  Spotify:   [spotify.com, scdn.co, spotifycdn.com]
+  Zoom:      [zoom.us, zoom.com]
+  Discord:   [discord.com, discordapp.com, discord.gg, discordapp.net]
+  Telegram:  [telegram.org, t.me, telegram.me]
+  Cloudflare: [cloudflare.com, cloudflare-dns.com, one.one.one.one]
+  LinkedIn:  [linkedin.com, licdn.com]
+  Reddit:    [reddit.com, redd.it, redditmedia.com, redditstatic.com]
+  Twitch:    [twitch.tv, ttvnw.net, jtvnw.net]
+  Snapchat:  [snapchat.com, sc-cdn.net]
+  Slack:     [slack.com, slack-edge.com]
+  Dropbox:   [dropbox.com, dropboxusercontent.com]
+  Wikipedia: [wikipedia.org, wikimedia.org]
+  OpenAI:    [openai.com, chatgpt.com, oaistatic.com]
+  Anthropic: [anthropic.com, claude.ai]
