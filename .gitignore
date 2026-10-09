@@ -9,3 +9,5 @@ build/
 out.pcap
 report.json
 flows.csv
+*.pcapng
+live*.pcap

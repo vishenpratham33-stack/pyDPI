@@ -22,6 +22,7 @@ class RuleSet:
     _exact_domains: frozenset[str] = field(default=frozenset(), repr=False)
     _globs: tuple[str, ...] = field(default=(), repr=False)
     _keywords: tuple[str, ...] = field(default=(), repr=False)
+    _app_display: tuple[str, ...] = field(default=(), repr=False)   # apps as the user typed them
 
     # ---------- construction ----------
     @classmethod
@@ -34,7 +35,8 @@ class RuleSet:
         # A bare word with no dot ("tiktok") is a keyword: substring match,
         # same behaviour as the original project's --block-domain.
         keywords = tuple(d for d in doms if "." not in d and "*" not in d and "?" not in d)
-        return cls(nets, apps_cf, doms, exact, globs, keywords)
+        shown = tuple(dict.fromkeys(a.strip() for a in apps))
+        return cls(nets, apps_cf, doms, exact, globs, keywords, shown)
 
     @classmethod
     def from_file(cls, path: str | Path) -> RuleSet:
@@ -45,7 +47,7 @@ class RuleSet:
     def merged_with(self, other: RuleSet) -> RuleSet:
         return RuleSet.build(
             [str(n) for n in self.ips + other.ips],
-            list(self.apps | other.apps),
+            list(self._app_display + other._app_display),
             list(self.domains + other.domains),
         )
 
@@ -79,7 +81,7 @@ class RuleSet:
 
     def describe(self) -> list[str]:
         out = [f"Blocked IP:     {n}" for n in self.ips]
-        out += [f"Blocked app:    {a}" for a in sorted(self.apps)]
+        out += [f"Blocked app:    {a}" for a in sorted(self._app_display, key=str.casefold)]
         out += [f"Blocked domain: {d}" for d in self.domains]
         return out
 
