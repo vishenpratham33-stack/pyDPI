@@ -1,11 +1,11 @@
 # PyDPI - Deep Packet Inspection Engine in Python
+[![CI](https://github.com/vishenpratham33-stack/pyDPI/actions/workflows/ci.yml/badge.svg)](https://github.com/vishenpratham33-stack/pyDPI/actions)
 
 PyDPI reads a network capture (`.pcap` / `.pcapng`), works out **which application each
 connection belongs to** (YouTube, Facebook, GitHub ...) by looking *inside* the packets,
 applies **blocking rules**, writes the allowed traffic to a new capture, and prints a report.
 
-> Inspired by the C++ project [perryvegehan/Packet_analyzer](https://github.com/perryvegehan/Packet_analyzer).
-> PyDPI is a full re-implementation in Python with a new architecture and many additional features.
+>PyDPI is a full re-implementation in Python with a new architecture and many additional features.
 
 ```
  input.pcap ──► reader ──► shard by flow ──► worker 0 ─┐
@@ -16,6 +16,13 @@ applies **blocking rules**, writes the allowed traffic to a new capture, and pri
 ```
 
 ## What it detects
+   ## Screenshots
+
+   ![Report](docs/report.png)
+
+   ![Blocking](docs/blocking.png)
+
+   ![Live dashboard](docs/live.png)
 
 | Traffic | How |
 |---|---|
